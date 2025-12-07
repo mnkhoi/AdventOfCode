@@ -1,8 +1,6 @@
-# Day 3
+# Day 7
 
 ## Approach
-
-I worked through the first question using a 
 
 
 ## Errors Encountered
