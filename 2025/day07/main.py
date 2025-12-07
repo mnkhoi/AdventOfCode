@@ -28,8 +28,6 @@
 
 # PART 2
 
-from typing import Tuple
-
 
 if __name__ == "__main__":
     f = open('input.txt', 'r')
@@ -59,3 +57,4 @@ if __name__ == "__main__":
     for i in range(COLS):
         if board[0][i] == "S":
             print(dfs(0, i))
+            break
