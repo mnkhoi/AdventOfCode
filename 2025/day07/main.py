@@ -27,7 +27,7 @@
 #             print(dfs(0, i))
 
 # PART 2
-
+from functools import cache
 
 if __name__ == "__main__":
     f = open('input.txt', 'r')
@@ -39,6 +39,8 @@ if __name__ == "__main__":
     ROWS, COLS = len(board), len(board[0])
 
     visited: dict[tuple[int,int], int]= {}
+
+    @cache
     def dfs(r: int, c:int) -> int:
         if r < 0 or c < 0 or c >= COLS:
             return 0
@@ -46,13 +48,10 @@ if __name__ == "__main__":
             return visited[(r,c)]
         if r >= ROWS:
             return 1
-        visited[(r,c)] = 0
         if board[r][c] == "^":
-            visited[(r,c)] = dfs(r + 1, c + 1) + dfs(r + 1, c - 1)
+            return dfs(r + 1, c + 1) + dfs(r + 1, c - 1)
         else:
-            visited[(r,c)] = dfs(r+1, c)
-
-        return visited[(r,c)]
+            return dfs(r+1, c)
 
     for i in range(COLS):
         if board[0][i] == "S":
